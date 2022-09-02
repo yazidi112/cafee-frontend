@@ -27,5 +27,5 @@ jobs:
         server:  ftp.itqanesoft.com
         username: hamlilic
         password: ${{ secrets.ftp_itqanesoft_password }}
-        local-dir: dist/test2/
+        local-dir: dist/cafee/
         server-dir: /public_html/
