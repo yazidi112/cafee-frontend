@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { TopbarComponent } from './topbar/topbar.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewCommandeComponent } from './new-commande/new-commande.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -17,9 +18,10 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     DashboardComponent,
     SidebarComponent,
-    HomeComponent,
     FooterComponent,
-    TopbarComponent
+    TopbarComponent,
+    NewCommandeComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

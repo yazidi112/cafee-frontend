@@ -15,13 +15,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginFormGroup = this.formBuilder.group({
-      username: this.formBuilder.control("",[Validators.required,Validators.minLength(3)]),
-      password: this.formBuilder.control("",[Validators.required,Validators.minLength(4)])
+      username: this.formBuilder.control("admin",[Validators.required,Validators.minLength(3)]),
+      password: this.formBuilder.control("1234",[Validators.required,Validators.minLength(4)])
     })
   }
 
   login(){
-    this.router.navigateByUrl("dashboard")
+    this.router.navigateByUrl("admin")
   }
 
   getFormControlError(controlName: string, error : ValidationErrors){
