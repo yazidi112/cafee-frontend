@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from 'src/app/core/models/user';
 import { AuthenticationService } from 'src/app/core/services/authentication.service';
 import { FormService } from '../../../core/services/form.service';
 
@@ -30,9 +31,12 @@ export class LoginComponent implements OnInit {
     let username = this.loginFormGroup.value.username;
     let password = this.loginFormGroup.value.password;
     this.authService.login(username,password).subscribe({
-      next:()=> this.router.navigateByUrl("/admin"),
-      error: error=> alert(error)
-    })
+      next: (user:User|null)=>{
+        this.authService.setAuthenticatedUser(user!);
+        this.router.navigateByUrl("admin");
+      },
+      error: (userError)=>alert(userError)
+    });;
   }
 
   logout(){

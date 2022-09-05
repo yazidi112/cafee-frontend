@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
@@ -8,28 +9,20 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthenticationService {
+   
   
   users!: User[];
+  token: String ="AAAAAAAAAAAA";
   authenticatedUser! : User|undefined;
 
-  constructor(private router: Router) { 
-    this.users = [
-      {username:"imran",password:"1234",roles:['USER']},
-      {username:"omar",password:"1234",roles:['USER']},
-      {username:"admin",password:"1234",roles:['USER','ADMIN']},
-    ]
+  constructor(private router: Router,private http:HttpClient){}
+
+  getToken():String{
+    return this.token;
   }
 
-  login(username:String, password:String): Observable<User>{
-    let appUser = this.users.find(user=>username==user.username);
-    if(!appUser){
-      return throwError(()=>new Error("User not found!"));
-    }
-    if(appUser.password!=password){
-      return throwError(()=>new Error("Password error!"));
-    }
-    this.setAuthenticatedUser(appUser);
-    return of(appUser);
+  login(username:String, password:String){
+    return this.http.get<User>('http://localhost:8080/user/1');
   }
 
   logout(){
@@ -42,11 +35,12 @@ export class AuthenticationService {
     this.authenticatedUser = user;
     localStorage.setItem("user",JSON.stringify({
       "username":this.authenticatedUser.username,
-      "roles": this.authenticatedUser.roles
+      "roles": this.authenticatedUser.roles,
+      "token": this.getToken()
     }));
   }
 
-  getAuthenticatedUSer():User{
+  getAuthenticatedUSer():User|undefined{
     return this.authenticatedUser!;
   }
 
