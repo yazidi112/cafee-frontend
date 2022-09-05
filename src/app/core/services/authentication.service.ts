@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
-import { User } from '../modles/user';
+import { User } from '../models/user';
 
 
 @Injectable({
@@ -35,6 +35,7 @@ export class AuthenticationService {
   logout(){
     this.authenticatedUser = undefined;
     localStorage.removeItem("user");
+    return true;
   }
 
   setAuthenticatedUser(user: User){

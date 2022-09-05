@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../modles/product';
-import { AuthenticationService } from '../services/authentication.service';
-import { ProductService } from '../services/product.service';
+import { Product } from 'src/app/core/models/product';
+
+import { AuthenticationService } from '../../../core/services/authentication.service';
+import { ProductService } from '../../../core/services/product.service';
 
 @Component({
   selector: 'app-new-commande',
@@ -21,12 +22,16 @@ export class NewCommandeComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts(){
     this.productService.getProducts().subscribe({
       next:(data)=>{
         this.products = data;
       },
       error:(err)=>{
-        this.errorMessage = "erruer"
+        this.errorMessage = "Error while pending products: "+err;
       }
     })
   }

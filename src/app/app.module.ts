@@ -1,34 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { FooterComponent } from './footer/footer.component';
-import { TopbarComponent } from './topbar/topbar.component';
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NewCommandeComponent } from './new-commande/new-commande.component';
-import { AdminComponent } from './admin/admin.component';
+import { AppComponent } from './app.component'; 
+import { HttpClientModule } from '@angular/common/http'; 
+import { CoreModule } from './core/core.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { SharedModule } from './shared/shared.module';
+import { CommandeModule } from './commande/commande.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent,
-    DashboardComponent,
-    SidebarComponent,
-    FooterComponent,
-    TopbarComponent,
-    NewCommandeComponent,
-    AdminComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
-
+    HttpClientModule ,
+    CoreModule,
+    AuthenticationModule,
+    SharedModule,
+    CommandeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
