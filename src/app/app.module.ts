@@ -1,13 +1,13 @@
-import { LOCALE_ID, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component'; 
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 import { CoreModule } from './core/core.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule } from './shared/shared.module';
 import { CommandeModule } from './commande/commande.module';
-import { httpInterceptorProviders } from './interceptors';
+import { AuthentificationInterceptor } from './interceptors/authentification.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,7 @@ import { httpInterceptorProviders } from './interceptors';
     CommandeModule
   ],
   providers: [
-    { provide: LOCALE_ID, useValue: 'fr-FR' },
-      httpInterceptorProviders
+    { provide: HTTP_INTERCEPTORS, useClass: AuthentificationInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

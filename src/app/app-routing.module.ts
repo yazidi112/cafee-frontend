@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './core/components/admin/admin.component';
 import { DashboardComponent } from './core/components/dashboard/dashboard.component';
 import { NewCommandeComponent } from './commande/components/new-commande/new-commande.component';
-import { AuthenticationGuard } from './core/guards/authentication.guard';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 const routes: Routes = [
   {path:'',redirectTo:'/auth/login',pathMatch:'full'},

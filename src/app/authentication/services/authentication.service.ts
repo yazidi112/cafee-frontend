@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, of, throwError } from 'rxjs';
-import { User } from '../models/user';
+import {environment} from '../../../environments/environment';
+import { User } from '../../core/models/user';
 
 
 @Injectable({
@@ -22,7 +22,10 @@ export class AuthenticationService {
   }
 
   login(username:String, password:String){
-    return this.http.get<User>('http://localhost:8080/user/1');
+    return this.http.post<User>(
+      environment.apiUrl+'/auth/login',
+      {"username":username,"password":password} 
+    );
   }
 
   logout(){
