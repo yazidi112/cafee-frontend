@@ -1,5 +1,6 @@
-export class User{
-    username!: String;
-    password!: String;
-    roles!: String[];
+export interface User{
+    username: string;
+    password: string;
+    roles: string[];
+    accessToken: string
 }

@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginFormGroup = this.formBuilder.group({
-      username: this.formBuilder.control("admin",[Validators.required,Validators.minLength(3)]),
-      password: this.formBuilder.control("1234",[Validators.required,Validators.minLength(4)])
+      username: this.formBuilder.control("yazidi2",[Validators.required,Validators.minLength(3)]),
+      password: this.formBuilder.control("yazidi2",[Validators.required,Validators.minLength(4)])
     })
   }
 
@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl("admin");
       },
       error: (userError)=>{
-        console.log(userError);
         alert("Login error: "+userError.message);
       }
     });;

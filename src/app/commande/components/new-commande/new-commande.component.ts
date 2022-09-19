@@ -13,7 +13,7 @@ import { ProductService } from '../../../core/services/product.service';
 export class NewCommandeComponent implements OnInit {
 
   products!: Product[];
-  errorMessage!: String;
+  
 
   constructor(
     private productService: ProductService,
@@ -31,7 +31,7 @@ export class NewCommandeComponent implements OnInit {
         this.products = data;
       },
       error:(err)=>{
-        this.errorMessage = "Error while pending products: "+err;
+        alert("Error while pending products: "+err);
       }
     })
   }

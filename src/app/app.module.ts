@@ -8,6 +8,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule } from './shared/shared.module';
 import { CommandeModule } from './commande/commande.module';
 import { AuthentificationInterceptor } from './interceptors/authentification.interceptor';
+import { CategorieModule } from './categorie/categorie.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthentificationInterceptor } from './interceptors/authentification.int
     CoreModule,
     AuthenticationModule,
     SharedModule,
-    CommandeModule
+    CommandeModule,
+    CategorieModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthentificationInterceptor, multi: true }

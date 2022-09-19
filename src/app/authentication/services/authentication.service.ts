@@ -12,18 +12,18 @@ export class AuthenticationService {
    
   
   users!: User[];
-  token: String ="AAAAAAAAAAAA";
+  
   authenticatedUser! : User|undefined;
 
   constructor(private router: Router,private http:HttpClient){}
 
-  getToken():String{
-    return this.token;
+  getToken():string|undefined{
+    return this.authenticatedUser!.accessToken
   }
 
-  login(username:String, password:String){
+  login(username:string, password:string){
     return this.http.post<User>(
-      environment.apiUrl+'/auth/login',
+      environment.apiUrl+'/api/auth/signin',
       {"username":username,"password":password} 
     );
   }
@@ -39,16 +39,12 @@ export class AuthenticationService {
     localStorage.setItem("user",JSON.stringify({
       "username":this.authenticatedUser.username,
       "roles": this.authenticatedUser.roles,
-      "token": this.getToken()
+      "token": this.authenticatedUser.accessToken
     }));
   }
 
   getAuthenticatedUSer():User|undefined{
     return this.authenticatedUser!;
-  }
-
-  hasRole(role:String):boolean{
-    return this.authenticatedUser!.roles.includes(role)
   }
 
   isAuthenticated():boolean{
