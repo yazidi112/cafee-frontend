@@ -21,18 +21,32 @@
         </div>
         <!-- Card Body -->
         <div class="card-body">
+            <div class="my-3">
+                <form class="form-inline align-items-center">
+                    <div class="form-group">
+                        <input #searchBox  type="search" placeholder="Mots clés.." (input)="search(searchBox.value)" class="form-control" />
+                    </div>
+                    <button input="submit" class="btn btn-primary">ok</button>
+                </form>
+            </div>
+          
             <table class="table table-striped">
                 <tr>
                     <th>id</th>
                     <th>Titre</th>
                     <th>Actions</th>
                 </tr>
-                <tr *ngFor="let category of categories">
+                <tr *ngFor="let category of categories | paginate: { itemsPerPage: 5, currentPage: p }">
                     <td>{{category.id}}</td>
                     <td>{{category.title}}</td>
-                    <td></td>
+                    <td>
+                        <button (click)="onDelete(category.id)" class="btn btn-danger btn-circle">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
                 </tr>
             </table>
+            <pagination-controls (pageChange)="p = $event" nextLabel="Suivant" previousLabel="Précedant"></pagination-controls>
         </div>
     </div>
 </div>

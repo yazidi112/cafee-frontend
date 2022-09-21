@@ -25,8 +25,11 @@
             <div class="form-group">
                 <label for="category-title">Titre</label>
                 <input type="text" formControlName="title" class="form-control" />
+                <small *ngIf="categoryForm.controls['title'].errors" class="form-text text-danger">
+                    {{onFormError(categoryForm.controls['title'])}}
+                </small>
             </div>
-            <button type="submit" class="btn btn-primary">Ajouter</button>
+            <button [disabled]="categoryForm.invalid" type="submit" class="btn btn-primary">Ajouter</button>
           </form>
         </div>
     </div>

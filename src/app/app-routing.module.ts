@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './core/components/admin/admin.component';
-import { DashboardComponent } from './core/components/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
 import { NewCommandeComponent } from './commande/components/new-commande/new-commande.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { CategoriesListComponent } from './categorie/components/categories-list/categories-list.component';

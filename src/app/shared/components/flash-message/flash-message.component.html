@@ -1,0 +1,8 @@
+<div class="container-fluid">
+    <div *ngIf="flash" class="alert"  
+    [ngClass]="{
+        'alert-danger':flash.options!.type=='error',
+        'alert-success':flash.options!.type=='success',
+        'alert-warning':flash.options!.type=='warning'
+    }" [appHide]="flash.options!.timeout">{{flash.message}}</div>
+</div>

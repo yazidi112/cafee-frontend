@@ -20,7 +20,7 @@
                                             placeholder="Enter your Username..">
                                         <small  class="form-text text-danger" 
                                             *ngIf="loginFormGroup.controls['username'].errors && loginFormGroup.controls['username'].touched">
-                                            {{getFormControlError("username",loginFormGroup.controls["username"].errors)}} 
+                                            {{getFormControlError(loginFormGroup.controls['username'])}} 
                                         </small>
                                     </div>
                                     <div class="form-group">
@@ -30,7 +30,7 @@
                                         placeholder="Password">
                                         <small  class="form-text text-danger" 
                                             *ngIf="loginFormGroup.controls['password'].errors && loginFormGroup.controls['password'].touched" >
-                                            {{getFormControlError("password",loginFormGroup.controls["password"].errors)}} 
+                                            {{getFormControlError(loginFormGroup.controls["password"])}} 
                                         </small>
                                     </div>
                                     <div class="form-group">

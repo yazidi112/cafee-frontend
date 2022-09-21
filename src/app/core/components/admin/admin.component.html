@@ -15,6 +15,7 @@
             <app-topbar></app-topbar>
             <!-- End of Topbar -->
 
+            <app-flash-message></app-flash-message>
             <!-- Begin Page Content -->
             <router-outlet></router-outlet>
             <!-- /.container-fluid -->
@@ -23,7 +24,13 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <app-footer></app-footer>
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Your Website 2021</span>
+                </div>
+            </div>
+        </footer>
         <!-- End of Footer -->
 
     </div>
