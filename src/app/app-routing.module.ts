@@ -6,6 +6,7 @@ import { NewCommandeComponent } from './commande/components/new-commande/new-com
 import { AuthenticationGuard } from './guards/authentication.guard';
 import { CategoriesListComponent } from './categorie/components/categories-list/categories-list.component';
 import { CategoryNewComponent } from './categorie/components/category-new/category-new.component';
+import { CategoryEditComponent } from './categorie/components/category-edit/category-edit.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'/auth/login',pathMatch:'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: 'commandes/new',component: NewCommandeComponent},
     {path: 'categories',component: CategoriesListComponent},
     {path: 'categories/new',component: CategoryNewComponent},
+    {path: 'categories/edit/:id',component: CategoryEditComponent},
   ]}
 ];
 

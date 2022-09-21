@@ -43,7 +43,11 @@
                         <button (click)="onDelete(category.id)" class="btn btn-danger btn-circle">
                             <i class="fas fa-trash"></i>
                         </button>
+                        <button (click)="onEdit(category.id)" class="btn btn-warning btn-circle ms-1">
+                            <i class="fas fa-pen"></i>
+                        </button>
                     </td>
+                     
                 </tr>
             </table>
             <pagination-controls (pageChange)="p = $event" nextLabel="Suivant" previousLabel="Précedant"></pagination-controls>

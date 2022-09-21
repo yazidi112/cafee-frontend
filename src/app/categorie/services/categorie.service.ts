@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { debounceTime, distinctUntilChanged, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Category } from '../models/category';
 
@@ -9,11 +9,16 @@ import { Category } from '../models/category';
 })
 export class CategoryService {
   
+  
 
   constructor(private http: HttpClient) { }
 
   getCategories() : Observable<Category[]> {
     return this.http.get<Category[]>(environment.apiUrl+'/api/categories');
+  }
+
+  getCategoryById(id: number) {
+    return this.http.get<Category>(environment.apiUrl+'/api/category/'+id);
   }
 
   search(term: string) : Observable<Category[]> {
@@ -29,5 +34,9 @@ export class CategoryService {
 
   delete(id:number):Observable<boolean>{
     return this.http.delete<boolean>(environment.apiUrl+'/api/category/'+id);
+  }
+
+  update(category: Category, id: number): Observable<Category>{
+    return this.http.put<Category>(environment.apiUrl+'/api/category/'+id,category);
   }
 }

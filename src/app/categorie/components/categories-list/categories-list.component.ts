@@ -1,4 +1,5 @@
 import { Component,   OnInit   } from '@angular/core';
+import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, Subject, switchMap } from 'rxjs';
  
 import { FlashMessageService } from 'src/app/shared/services/flash-message.service';
@@ -16,7 +17,10 @@ export class CategoriesListComponent implements OnInit {
   categories!: Category[];
   private searchTerms = new Subject<string>();
 
-  constructor(private categoryService : CategoryService, private flashMessage: FlashMessageService) { }
+  constructor(private categoryService : CategoryService,
+             private flashMessage: FlashMessageService,
+             private router: Router
+            ) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -59,8 +63,9 @@ export class CategoriesListComponent implements OnInit {
     });
   }
 
-}
-function ViewChild(arg0: string, arg1: { static: boolean; }) {
-  throw new Error('Function not implemented.');
-}
+  onEdit(id: number){
+    this.router.navigateByUrl("admin/categories/edit/"+id);
+  }
 
+}
+ 
