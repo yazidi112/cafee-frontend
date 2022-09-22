@@ -1,7 +1,7 @@
 import { Component,   OnInit   } from '@angular/core';
 import { Router } from '@angular/router';
 import { debounceTime, distinctUntilChanged, Subject, switchMap } from 'rxjs';
- 
+import { PageEvent } from '@angular/material/paginator';
 import { FlashMessageService } from 'src/app/shared/services/flash-message.service';
 import { Category } from '../../models/category';
 import { CategoryService } from '../../services/categorie.service';
@@ -15,6 +15,7 @@ export class CategoriesListComponent implements OnInit {
 
   p: number = 1; 
   categories!: Category[];
+  totalElements: number = 0;
   private searchTerms = new Subject<string>();
 
   constructor(private categoryService : CategoryService,
@@ -23,7 +24,7 @@ export class CategoriesListComponent implements OnInit {
             ) { }
 
   ngOnInit(): void {
-    this.getCategories();
+    this.getCategories({ page: "0", size: "5" });
     this.onSearch();
   }
 
@@ -42,15 +43,27 @@ export class CategoriesListComponent implements OnInit {
     this.searchTerms.next(term);
   }
 
-  getCategories(){
-    this.categoryService.getCategories().subscribe({
-      next: (data)=>this.categories = data,
-      error: (err)=> this.flashMessage.show(err)
+  getCategories(request:{}){
+    this.categoryService.getCategories(request).subscribe({
+      next: (data)=>{
+        this.categories = data['content'];
+        this.totalElements = data['totalElements'];
+      },
+      error: (err)=>{
+        this.flashMessage.show(err);
+        console.log(err);
+      } 
     })
   }
 
+  nextPage(event: PageEvent) {
+    console.log(event);
+    const request = {page:event.pageIndex.toString(),size:event.pageSize.toString()};
+    this.getCategories(request);
+  }
+
   onDelete(id:number){
-    let isConfirmed: boolean = confirm("Vous êtes sur de vouloir supprimer cette catégorie ?");
+    let isConfirmed: boolean = confirm("Vous êtes sûr de vouloir supprimer cette catégorie ?");
     if(!isConfirmed)
       return;
       

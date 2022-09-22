@@ -13,8 +13,9 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getCategories() : Observable<Category[]> {
-    return this.http.get<Category[]>(environment.apiUrl+'/api/categories');
+  getCategories(request: {}) : Observable<any> {
+    console.log(request);
+    return this.http.get<any>(environment.apiUrl+'/api/categories/',{params:request});
   }
 
   getCategoryById(id: number) {
@@ -23,7 +24,7 @@ export class CategoryService {
 
   search(term: string) : Observable<Category[]> {
     if(term == "")
-      return this.getCategories();
+      return this.getCategories({ page: "0", size: "5" });
       
     return this.http.get<Category[]>(environment.apiUrl+'/api/search/categories/'+term);
   }

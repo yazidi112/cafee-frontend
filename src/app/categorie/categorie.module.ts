@@ -5,6 +5,7 @@ import { CategoryNewComponent } from './components/category-new/category-new.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CategoryEditComponent } from './components/category-edit/category-edit.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -19,6 +20,7 @@ import { CategoryEditComponent } from './components/category-edit/category-edit.
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatPaginatorModule
   ]
 })
 export class CategorieModule { }

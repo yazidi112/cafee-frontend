@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { CommandeModule } from './commande/commande.module';
 import { CategorieModule } from './categorie/categorie.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
     SharedModule,
     CommandeModule,
     CategorieModule,
-    DashboardModule
+    DashboardModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthentificationInterceptor, multi: true }

@@ -36,7 +36,7 @@
                     <th>Titre</th>
                     <th>Actions</th>
                 </tr>
-                <tr *ngFor="let category of categories | paginate: { itemsPerPage: 5, currentPage: p }">
+                <tr *ngFor="let category of categories">
                     <td>{{category.id}}</td>
                     <td>{{category.title}}</td>
                     <td>
@@ -50,7 +50,7 @@
                      
                 </tr>
             </table>
-            <pagination-controls (pageChange)="p = $event" nextLabel="Suivant" previousLabel="Précedant"></pagination-controls>
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [length]="totalElements" (page)="nextPage($event)"> </mat-paginator>
         </div>
     </div>
 </div>
